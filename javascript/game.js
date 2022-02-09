@@ -13,6 +13,7 @@ class Game {
         this.isGameOn = true // saber si el jeugo esta funcionando
         this.winScore = 50;
         this.dog = new Dog();
+
         
     
     }
@@ -34,18 +35,6 @@ class Game {
         //ctx.fillText('Time: ' + this.countTime , 100, 200);
       }
 
-/*     timeFinishGame = () => {
-        this.countTime -= 1 // Disminuye cada segundo
-        if(this.countTime <= 0){
-            // detenemos el loop
-            this.isGameOn = false;
-            // ocultamos el canvas
-            canvas.style.display = "none";
-            //pantalla de gameOver 
-            gameOverScreen.style.display = "flex";
-
-        }
-    } */
     winGame = () =>{
         if(this.contadorPersonas >= this.winScore){
             this.isGameOn = false;
@@ -84,11 +73,16 @@ class Game {
         }
     }
 
+    
+
     // todo, aquie me agrega el zombie
     spawningZombie = () => {
         //let lastZombie = this.zombieArr[this.zombieArr - 1]; // ultimo zombie del array
+        
         let newZombie = new Zombie();
+        newZombie.zombieSpeed += 0.3
         this.zombieArr.push(newZombie);
+        
 
 
     }
@@ -126,6 +120,7 @@ class Game {
                     //aqui agrego un nuevo zombie
                     console.log("agregando zombie");
                     this.spawningZombie();
+
                 }
                 
             
@@ -218,12 +213,13 @@ class Game {
         this.score();
         
         
-        if(this.contadorPersonas > 5){
+        if(this.contadorPersonas >= 7){
             this.dog.drawdog();
             this.dogMovement();
         }
 
-       
+
+
         
         this.dog.dogWallCollision();
 
@@ -233,8 +229,10 @@ class Game {
             eachZombie.drawZombie();
             this.checkZombieCollision(eachZombie);
             this.zombieMovement(eachZombie);
+            
 
         })  
+        
  
         //this.zombie.drawZombie();
         //this.zombieMovement();

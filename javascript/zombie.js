@@ -1,8 +1,8 @@
 class Zombie {
   constructor() {
     // Propiedades del zombie
-    this.x = 100
-    this.y = 100;
+    this.x = Math.random() * (canvas.width - 64);;
+    this.y = Math.random() * (canvas.height - 60);
     this.width = 80;
     this.height = 80;
     this.img = new Image();
@@ -21,9 +21,12 @@ class Zombie {
   // Metodos del zombie(acciones)
    // para que aparezca el soldado
    drawZombie = () => {
+    //let randomXZombie = Math.random() * (canvas.width - 64);
+    //let randomYZombie = Math.random() * (canvas.height - 60);
     //drawImage(imagen, ubicacionX, ubicacionY, recorteX, recorteY, x1, y1, x2,y2)
     //ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     ctx.drawImage(this.img, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+    
     
 }
 
