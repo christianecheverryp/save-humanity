@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save the Humanity</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div id="splash-screen" class="container">
+
+        <!-- SPLASH SCREEN -->
+        <h1>AQUI VA EL TITULO DEL JUEGO</h1>
+        <p>Aqui van la instrucciones</p>
+        <button id="start-btn">Start</button>
+      </div>
+
+      <!-- GAME SCREEN -->
+      <canvas id="my-canvas" width="900" height="600"></canvas>
+
+      <!-- GAME wim SCREEN -->
+      <div id="win-screen" class="container">
+        <h1>You win</h1>
+        <button id="restart-btn">Play Again</button>
+    </div>
+
+      <!-- GAME OVER SCREEN -->
+      <div id="gameover-screen" class="container">
+          <h1>You Lose</h1>
+          <button id="restart-btn-lose">Play Again</button>
+      </div>
+      
+    </div>
+
+    <script src="./javascript/main.js"></script>
+    <script src="./javascript/game.js"></script>
+    <script src="./javascript/soldier.js"></script>
+    <script src="./javascript/zombie.js"></script>
+    <script src="./javascript/person.js"></script>
+    <script src="./javascript/dog.js"></script>
+  </body>
+</html>

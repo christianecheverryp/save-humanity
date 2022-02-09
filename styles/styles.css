@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background-color: greenyellow;
+    overflow: hidden; /* Hide scrollbars */
+    
+  }
+#my-canvas {
+    background-color:lightblue;
+}
+
+
+  #start-btn, #restart-btn, #restart-btn-lose {
+    background-color: green;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 40px;
+    border-radius: 10px; 
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+
+  /* Al iniciar el juego que se oculten el contenedor my-canvas y gameover-screen */
+  #my-canvas, #gameover-screen, #win-screen {
+      display: none;
+  }
