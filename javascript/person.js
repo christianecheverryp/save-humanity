@@ -6,7 +6,7 @@ class Person {
       this.width = 50;
       this.height = 50;
       this.img = new Image();
-      this.img.src = "../images/soldier.png";
+      this.img.src = "./images/soldier.png";
       this.speedPerson = Math.random() * 5 + 1;
       this.distance;
   

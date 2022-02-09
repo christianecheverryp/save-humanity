@@ -6,7 +6,7 @@ class Soldier {
         this.width = 80; // el tamaño de cada animacion (ancho)
         this.height =80; // tamaño de cada animacion (alto)
         this.img = new Image();
-        this.img.src = "../images/fatbase_2.png"
+        this.img.src = "./images/fatbase_2.png"
         this.soldierSpeed = 20; // velocidad del soldado al moverse
 
         this.indiceX = 0; // donde empieza la animacion

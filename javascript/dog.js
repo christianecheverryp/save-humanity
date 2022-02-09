@@ -6,7 +6,7 @@ class Dog {
       this.width = 100;
       this.height = 100;
       this.img = new Image();
-      this.img.src = "../images/animals.png";
+      this.img.src = "./images/animals.png";
       this.dogSpeed = 0.1; // velocidad del dog al moverse
   
       this.dogDirectionX = 1; // 1 es mover a la derecha y -1 mover a la izquierda.

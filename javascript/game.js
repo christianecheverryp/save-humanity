@@ -3,7 +3,7 @@ class Game {
     constructor() {
         // todas las propiedades del juego
         this.bg = new Image();
-        this.bg.src = "../images/bg.png"
+        this.bg.src = "./images/bg.png"
         this.soldier = new Soldier();  // ? Propiedad para crear el soldado en el juego
         //this.zombie = new Zombie(); // ? Propiedad para crear el zombie en el juego
         this.personArr = [] // ? para añadir mas de una persona al juego
@@ -87,27 +87,28 @@ class Game {
     // todo, aquie me agrega el zombie
     spawningZombie = () => {
         //let lastZombie = this.zombieArr[this.zombieArr - 1]; // ultimo zombie del array
-        if(this.contadorPersonas > 5){
-            //aqui agrego un nuevo zombie
-            console.log("agregando zombie");
-            let newZombie = new Zombie();
-            this.zombieArr.push(newZombie);
-        }
+        let newZombie = new Zombie();
+        this.zombieArr.push(newZombie);
 
 
     }
-    zombieMovement = () => {
-        if(this.soldier.x > this.zombieArr.x){
-            this.zombieArr.x += this.zombieArr.zombieSpeed
+
+    
+
+    zombieMovement = (eachZombie) => {
+        if(this.soldier.x > eachZombie.x){
+            eachZombie.x += eachZombie.zombieSpeed
         }else{
-            this.zombieArr.x -= this.zombieArr.zombieSpeed
+            eachZombie.x -= eachZombie.zombieSpeed
         }
-        if( this.soldier.y > this.zombieArr.y){
-            this.zombieArr.y += this.zombieArr.zombieSpeed
+        if( this.soldier.y > eachZombie.y){
+            eachZombie.y += eachZombie.zombieSpeed
         }else{
-            this.zombieArr.y -= this.zombieArr.zombieSpeed
+            eachZombie.y -= eachZombie.zombieSpeed
         }
       }
+
+
 
 
     checkSoldierCollision = () => {
@@ -120,7 +121,12 @@ class Game {
                 this.personArr.pop()
                 this.contadorPersonas++;
                 console.log(this.personArr)
-                
+
+                if(this.contadorPersonas % 5 === 0){
+                    //aqui agrego un nuevo zombie
+                    console.log("agregando zombie");
+                    this.spawningZombie();
+                }
                 
             
                 // collision detected!
@@ -138,11 +144,11 @@ class Game {
     } 
     
     // todo, aqui cambien zombie por zombieArr
-    checkZombieCollision = () => {
-        if (this.soldier.x < this.zombieArr.x + this.zombieArr.width &&
-            this.soldier.x + this.soldier.width > this.zombieArr.x &&
-            this.soldier.y < this.zombieArr.y + this.zombieArr.height &&
-            this.soldier.height + this.soldier.y > this.zombieArr.y){
+    checkZombieCollision = (eachZombie) => {
+        if (this.soldier.x < eachZombie.x + eachZombie.width &&
+            this.soldier.x + this.soldier.width > eachZombie.x &&
+            this.soldier.y < eachZombie.y + eachZombie.height &&
+            this.soldier.height + this.soldier.y > eachZombie.y){
             console.log("choque zombie soldado") 
 
                 
@@ -196,11 +202,11 @@ class Game {
         // 2. Moverlos los elementos u otras acciones
         //this.zombie.zombieMovement();
  
-        this.checkZombieCollision();
+        
         this.checkSoldierCollision();
 
 
-        this.zombieMovement(); // todo, esto es un metodo de game, lo tengo que leer en un for each?
+    
         
         //this.spawningZombie();
 
@@ -225,6 +231,9 @@ class Game {
 
           this.zombieArr.forEach((eachZombie) => {
             eachZombie.drawZombie();
+            this.checkZombieCollision(eachZombie);
+            this.zombieMovement(eachZombie);
+
         })  
  
         //this.zombie.drawZombie();
