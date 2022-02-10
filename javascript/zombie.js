@@ -7,7 +7,7 @@ class Zombie {
     this.height = 80;
     this.img = new Image();
     this.img.src = "./images/zombie.png";
-    this.zombieSpeed = 0.1; // velocidad del zombie al moverse
+    this.zombieSpeed = 0.3; // velocidad del zombie al moverse
 
     this.zombieDirectionX = 1; // 1 es mover a la derecha y -1 mover a la izquierda.
     this.zombieDirectionY = 1;

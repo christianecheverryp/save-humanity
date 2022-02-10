@@ -14,23 +14,58 @@
       <div id="splash-screen" class="container">
 
         <!-- SPLASH SCREEN -->
-        <h1>AQUI VA EL TITULO DEL JUEGO</h1>
-        <p>Aqui van la instrucciones</p>
-        <button id="start-btn">Start</button>
+        <img src="./images/titulo.png" alt="saveHumanity">
+        <p>In this game, you have to rescue humanity from the attack of the alliens, 
+          but be careful with the dogs! don't pet them or you might get a surprise! </p>
+        
+         <div id="contenedor-botones" >
+          <div>
+            <button id="start-btn">Start</button>
+            </div>
+            <div>
+              <button id="instructions-btn">Intructions</button>
+            </div>  
+         </div>
+        
+        
+        <!-- VENTANA MODAL -->
+        <div id="modal_container" class="modal-container">
+          <div class="modal">
+            <h1>Instructions</h1>
+            <p id="parrafoI"> Use the arrow keys to move around and rescue the humans, be careful because every time you capture 5 humans, more Alliens will come out faster and faster!
+              Good Luck! </p>
+            <img id="teclado" src="./images/teclado.png" alt="keyboard">
+          <button id="close-btn">Cerrar</button>
+          </div>
+        </div>
+
+      <!-- BOTON MUSIC -->  
+      </div id="music">
+      
+        <button id="playPause-btn">&#128266;</button>
+        <div>
+
       </div>
 
       <!-- GAME SCREEN -->
-      <canvas id="my-canvas" width="900" height="600"></canvas>
+      <canvas id="my-canvas" width="900" height="600" ></canvas>
 
       <!-- GAME wim SCREEN -->
       <div id="win-screen" class="container">
-        <h1>You win</h1>
+        <h1>You have saved the last man on earth!!!</h1>
+        <div id="winner-div">
+          <img id="winner" src="./images/fuck-yeah.gif" alt="Loser">
+        </div>
         <button id="restart-btn">Play Again</button>
     </div>
 
       <!-- GAME OVER SCREEN -->
       <div id="gameover-screen" class="container">
-          <h1>You Lose</h1>
+          <div>
+            <img id="loser" src="./images/loser.gif" alt="Loser">
+          </div>
+          <h1>Next time...</h1>
+          <h3 id="scoreCounter"></h3>
           <button id="restart-btn-lose">Play Again</button>
       </div>
       
@@ -42,5 +77,6 @@
     <script src="./javascript/zombie.js"></script>
     <script src="./javascript/person.js"></script>
     <script src="./javascript/dog.js"></script>
+    <script src="./javascript/audio.js"></script>
   </body>
 </html>

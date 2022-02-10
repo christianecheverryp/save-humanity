@@ -7,7 +7,14 @@ let gamewinScreen = document.querySelector("#win-screen");
 let canvas = document.querySelector("#my-canvas"); // ? 1. selecciono el canvas
 let ctx = canvas.getContext("2d"); // ? 1. inicio la herramienta de pinta
 let newGame; // esta variable va ser accesible desde cualquier lugar del codigo
+//let audio = document.getElementById("audio")
+let playPauseBtn = document.querySelector("#playPause-btn")
 
+let instructionsBtn = document.querySelector("#instructions-btn")
+let modal_container = document.getElementById("modal_container")
+let closeInstructionsBtn = document.querySelector("#close-btn")
+
+let scoreCounter = document.querySelector("#scoreCounter");
 
 
 
@@ -18,6 +25,10 @@ const startGame = () => {
   // ? 2. con esta funcion desaparece el splash screen y aparece el canvas
   splashScreen.style.display = "none";
   canvas.style.display = "flex";
+  
+ 
+
+
 
 
 //cuando apreto el boton start, quiero que se cree un nuevo elemento que guarde todo lo de la clase game
@@ -31,6 +42,8 @@ const restartGame = () => {
   // ? 2. con esta funcion desaparece el splash screen y aparece el canvas
   splashScreen.style.display = "none";
   canvas.style.display = "flex";
+  gameOverScreen.style.display = "none"
+  gamewinScreen.style.display = "none"
 
 
   //cuando apreto el boton start, quiero que se cree un nuevo elemento que guarde todo lo de la clase game
@@ -74,4 +87,26 @@ document.addEventListener("keydown", (event) => {
   
   //console.log("Presionada " + key);
 })
+
+
+playPauseBtn.addEventListener("click", () =>{
+  console.log("pulsado")
+  playPause();
+})
+
+instructionsBtn.addEventListener("click", () => {
+  modal_container.classList.add("show");
+})
+
+closeInstructionsBtn.addEventListener("click", () => {
+  modal_container.classList.remove("show");
+})
+
+/* window.addEventListener("load" ,() => {
+  console.log("pagina cargada")
+  if(myMusic){
+    myMusic.play();
+  }
+  
+}) */
 
