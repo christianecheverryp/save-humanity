@@ -11,13 +11,13 @@ class Game {
         this.contadorPersonas = 0;
         this.countTime = 30;
         this.isGameOn = true // saber si el jeugo esta funcionando
-        this.winScore = 10;
+        this.winScore = 20;
         this.dog = new Dog();
 
-        this.myMusicGameOver = new Audio("../music/gameOver.mp3")
-        this.myMusicVictoria = new Audio("../music/yeah.mp3")
-        this.myMusicPrincipal = new Audio("../music/AMBIENTIC.mp3");
-        this.myMusicToquePersonaje = new Audio("../music/toque.wav");
+        this.myMusicGameOver = new Audio("./music/gameOver.mp3")
+        this.myMusicVictoria = new Audio("./music/yeah.mp3")
+        this.myMusicPrincipal = new Audio("./music/AMBIENTIC.mp3");
+        this.myMusicToquePersonaje = new Audio("./music/toque.wav");
         this.countPlayPause = 0;
 
         
