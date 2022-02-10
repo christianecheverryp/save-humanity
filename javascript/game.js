@@ -1,4 +1,5 @@
 // ESTRUCTURA DE LA CLASE DE NUESTRO JUEGO, todas las caracteristicas del juego
+// ESTRUCTURA DE LA CLASE DE NUESTRO JUEGO, todas las caracteristicas del juego
 class Game {
     constructor() {
         // todas las propiedades del juego

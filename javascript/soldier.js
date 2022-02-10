@@ -13,12 +13,53 @@ class Soldier {
         this.indiceY = 0; // dodne empieza la animacion
 
 
-        this.spriteWidth = 52; // tamaño del sheet (ancho) * numero de columnas
-        this.spriteHeight = 72; // tamaño del sheet (alto) * numero de filas
+        this.spriteWidth = 48.47; // alto del muñeco
+        this.spriteHeight = 72; // ancho del muñeco
 
+        this.playerState = "frente";
+
+
+        this.gameFrame = 0;
+        this.straggerFrames = 45;
+        this.spriteAnimations = [];
+        this.animationStates = [
+            {
+                name: "frente",
+                frames: 3,
+            },
+            {
+                name: "izquierda",
+                frames: 3,
+            },
+            {
+                name: "derecha",
+                frames: 3,
+            },
+            {
+                name: "trasero",
+                frames: 3,
+            }
+        ];
+        this.animationStates.forEach((state, index) => {
+            let frames = {
+                loc: [],
+            }
+            for(let j = 0; j < state.frames; j++){
+                let positionX = j * this.spriteWidth;
+                let positionY = index * this.spriteHeight;
+                frames.loc.push({x: positionX, y: positionY});
+            }
+            this.spriteAnimations[state.name] = frames;
+        });
+        console.log(this.spriteAnimations)
 
         
     }
+
+/*     animate = () => {
+        ctx.drawImage(this.img, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
+
+    } */
 
     // Metodos del soldado (acciones)
     // para que aparezca el soldado
@@ -27,13 +68,19 @@ class Soldier {
         //ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         //drawImage(imagen, ubicacionX, ubicacionY, recorteX, recorteY, x1, y1, x2,y2)
         //ctx.drawImage(this.img, 0, 0, 46, 58, this.x, this.y, this.width, this.height)
-        //ctx.drawImage(this.img, this.indiceX, this.indiceY, this.width, this.height, this.x, this.y, this.width, this.height);
+        let position = Math.floor(this.gameFrame / this.straggerFrames) % this.spriteAnimations[this.playerState].loc.length;
+        this.frameX = this.spriteWidth * position;
+        this.frameY = this.spriteAnimations[this.playerState].loc[position].y;
+        ctx.drawImage(this.img, this.frameX, this.frameY ,this.spriteWidth ,this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight)
+
+        
+        this.gameFrame++;
 /*         this.indiceX = this.indiceX + 1;
         if(this.indiceX > 2){
-            this.indiceX = 0; */
+            this.indiceX = 0; 
             ctx.drawImage(this.img, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
-        }
-
+        */       } 
+ 
 
 
 
@@ -41,6 +88,7 @@ class Soldier {
 
      soldierMovementUp = () => {
         this.y = this.y - this.soldierSpeed;
+        this.playerState = "trasero"
         if(this.y < 0){
             console.log("toca arriba")
             this.y = 0;
@@ -50,6 +98,7 @@ class Soldier {
 
     soldierMovementDown = () => {
         this.y = this.y + this.soldierSpeed;
+        this.playerState = "frente"
         if(this.y + this.height >= canvas.height){
             console.log("toca abajo")
             this.y = canvas.height - this.height
@@ -58,6 +107,7 @@ class Soldier {
 
     soldierMovementRight = () => {
         this.x = this.x + this.soldierSpeed;
+        this.playerState = "derecha"
         if(this.x + this.width >= canvas.width){
             console.log("toca derecha")
             this.x = canvas.width - this.width
@@ -66,6 +116,7 @@ class Soldier {
 
     soldierMovementLeft = () => {
         this.x = this.x - this.soldierSpeed;
+        this.playerState = "izquierda"
         if(this.x < 0){
             console.log("toca izquierda")
             this.x = 0;
