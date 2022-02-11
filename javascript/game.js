@@ -1,12 +1,10 @@
 // ESTRUCTURA DE LA CLASE DE NUESTRO JUEGO, todas las caracteristicas del juego
-// ESTRUCTURA DE LA CLASE DE NUESTRO JUEGO, todas las caracteristicas del juego
 class Game {
     constructor() {
         // todas las propiedades del juego
         this.bg = new Image();
         this.bg.src = "./images/bg.png"
         this.soldier = new Soldier();  // ? Propiedad para crear el soldado en el juego
-        //this.zombie = new Zombie(); // ? Propiedad para crear el zombie en el juego
         this.personArr = [] // ? para añadir mas de una persona al juego
         this.zombieArr = [ new Zombie()];
         this.contadorPersonas = 0;
@@ -21,30 +19,22 @@ class Game {
         this.myMusicPrincipal = new Audio("./music/AMBIENTIC.mp3");
         this.myMusicPrincipal.audio.volume = 0.1;
         this.myMusicToquePersonaje = new Audio("./music/toque.wav");
-
-        
-        
-
-
-        
-    
     }
 
 
     drawBackground = () => {
-        ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height); // ? dibujamos la imagen de fondon y la pasamos el tamaño de todo el fondo
+        ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height); // dibujamos la imagen de fondon y la pasamos el tamaño de todo el fondo
     }
 
     clearCanvas = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height) // ? limpia todo el canvas desde la posicion 0,0 hasta canvas.width,height
+        ctx.clearRect(0, 0, canvas.width, canvas.height) //  limpia todo el canvas desde la posicion 0,0 hasta canvas.width,height
 
     }
-
+    // ventanita de puntuacion
     score = () => {
         ctx.font = '30px Arial';
         ctx.fillStyle = 'black';
         ctx.fillText('Rescued: ' + this.contadorPersonas , 100, 100);
-        //ctx.fillText('Time: ' + this.countTime , 100, 200);
       }
 
     winGame = () =>{
@@ -52,11 +42,9 @@ class Game {
             this.isGameOn = false;
             // ocultamos el canvas
             canvas.style.display = "none";
-            
-            //pantalla de gameOver 
+            //pantalla de winGame 
             gamewinScreen.style.display = "flex";
             console.log("youwin")
-            
             this.myMusicVictoria.play();
         }
     }
@@ -77,28 +65,24 @@ class Game {
     }
 
 
-    randomPerson = () => {
-        
+    randomPerson = () => {       
         let randomX = Math.random() * (canvas.width - 64);
         let randomY = Math.random() * (canvas.height - 60);
 
         let newPerson = new Person(randomX, randomY);
-        if(this.personArr.length == 0){
-            
+        if(this.personArr.length == 0){         
             this.personArr.push(newPerson);
         }
     }
 
     
 
-    // los alliens siguientes van a ir aumentando la velocidad
+    // Los alliems que se van creando van aumentando la velocidad.
     spawningZombie = () => {      
         let newZombie = new Zombie();
         newZombie.zombieSpeed += 0.3 // aumenta la velocidad cada que se crea un nuevo zombie
         this.zombieArr.push(newZombie);
     }
-
-    
 
     zombieMovement = (eachZombie) => {
         if(this.soldier.x > eachZombie.x){
@@ -114,15 +98,12 @@ class Game {
       }
 
 
-
-
     checkSoldierCollision = () => {
         if(this.personArr.length > 0){
             if (this.soldier.x < this.personArr[0].x + (this.personArr[0].width)&&
                 this.soldier.x + (this.soldier.width - 50) > this.personArr[0].x &&
                 this.soldier.y < this.personArr[0].y + (this.personArr[0].height - 40 ) &&
                 (this.soldier.height) + this.soldier.y > this.personArr[0].y){
-                console.log("choque soldado persona") 
                 this.personArr.pop()
                 this.contadorPersonas++;
                 this.myMusicToquePersonaje.play();
@@ -134,39 +115,18 @@ class Game {
                     this.spawningZombie();
 
                 }
-                
-            
-                // collision detected!
-                //console.log("Colisionando!")
-                //debemos terminar el juego
-                //1. detener el loop
-                //this.isGameOn = false;
-                //2. ocultar el canvas
-                //canvas.style.display = "none" // ? ocultamos el canvas cuando chocamos
-                //3. buscar el gameOver screen y darle display flex.
-                //gameOverScreen.style.display = "flex";
               }
         }
         
     } 
     
-    // todo, aqui cambien zombie por zombieArr
     checkZombieCollision = (eachZombie) => {
         if (this.soldier.x < eachZombie.x + (eachZombie.width - 40) && // Toque al personaje por la izq.
             this.soldier.x + (this.soldier.width - 40 ) > (eachZombie.x) && // toque al personaje por la derecha.
             this.soldier.y < eachZombie.y + (eachZombie.height - 20) && // toque al personaje por arriba
             (this.soldier.height - 25 ) + this.soldier.y > eachZombie.y){ // toque al personaje por abajo
-            console.log("choque zombie soldado") 
             this.myMusicPrincipal.stop();
             this.myMusicGameOver.play();
-            
-            
-
-                
-            
-                // collision detected!
-                //console.log("Colisionando!")
-                //debemos terminar el juego
                 //1. detener el loop
                 this.isGameOn = false;
                 //2. ocultar el canvas
@@ -174,8 +134,6 @@ class Game {
                 //3. buscar el gameOver screen y darle display flex.
                 gameOverScreen.style.display = "flex";
                 scoreCounter.textContent = " Total people rescued: " + this.contadorPersonas ;
-
-                console.log("game over")
               }        
       } 
 
@@ -187,8 +145,7 @@ class Game {
             console.log("choque dog soldado") 
                 //debemos terminar el juego
                 //1. detener el loop
-                this.isGameOn = false;
-                
+                this.isGameOn = false;               
                 //2. ocultar el canvas
                 canvas.style.display = "none" // ? ocultamos el canvas cuando chocamos
                 //3. buscar el gameOver screen y darle display flex.
@@ -196,48 +153,15 @@ class Game {
                 this.myMusicPrincipal.stop();
                 this.myMusicGameOver.play();
                 scoreCounter.textContent = " Total people rescued: " + this.contadorPersonas ;
-
               }        
       } 
-
-
-
-/* playPause = () => {
-  if(count == 0 ){
-    countPlayPause = 1;
-    Audio.play();
-    playPauseBtn.innerHTML = "&#128266;"
-  }else {
-    countPlayPause = 0;
-    myMusicPrincipal.pause();
-    playPauseBtn.innerHTML = "&#128264;"
-  }
-} */
-
-
-
-
-
     // todas nuestros metodos (las acciones del juego)
     // generamos el bucle de todo el juego
     gameLoop = () => {
-        // pasos que necesitamos
-        // 1. Limpiar el canvas
         this.clearCanvas();
         this.winGame();  
         this.myMusicPrincipal.play();
-        // 2. Moverlos los elementos u otras acciones
-        //this.zombie.zombieMovement();
- 
-        
         this.checkSoldierCollision();
-
-
-    
-        
-        //this.spawningZombie();
-
-        // 3. Dibujar los elementos
         this.drawBackground();
         this.soldier.drawSoldier();
         this.randomPerson();
@@ -253,23 +177,15 @@ class Game {
         if(this.contadorPersonas > 5 && this.contadorPersonas % 3 === 0){
             this.dogMovement();
         }
-
-
-
-        
         this.dog.dogWallCollision();
         this.checkDogCollision();
         
-
         this.zombieArr.forEach((eachZombie) => {
             eachZombie.drawZombie();
             this.checkZombieCollision(eachZombie);
             this.zombieMovement(eachZombie);
-              
-
         })   
 
-        // 4. Recursion para la animacion
         //aqui hacemos una condicion para saber si el juego esta funcionando, que haga el requestanimation
         if(this.isGameOn === true){
             requestAnimationFrame(this.gameLoop)

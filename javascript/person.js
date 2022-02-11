@@ -11,13 +11,7 @@ class Person {
       this.distance;
   
     }
-  
-    // Metodos del person(acciones)
-     // para que aparezca el soldado
      drawPerson = () => {
       ctx.drawImage(this.img, 0, 0, 16, 32, this.x, this.y, this.width, this.height)
   }
-
-
- 
   }

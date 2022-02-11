@@ -17,44 +17,20 @@ class Zombie {
 
     
   }
-
-  // Metodos del zombie(acciones)
-   // para que aparezca el soldado
    drawZombie = () => {
-    //let randomXZombie = Math.random() * (canvas.width - 64);
-    //let randomYZombie = Math.random() * (canvas.height - 60);
-    //drawImage(imagen, ubicacionX, ubicacionY, recorteX, recorteY, x1, y1, x2,y2)
-    //ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     ctx.drawImage(this.img, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
-    
-    
+
 }
-
- 
-
 zombieWallCollision = () => {
   if ( this.x > canvas.width) {
-    // la pelotita se tiene que regresar
-    // console.log("choco con la pared") // ??
-    // this.x = ballX - 20
     this.zombieDirectionX = - 1;
   } else if (this.y > canvas.height) {
     this.zombieDirectionY = - 1;
-    //isGameOver = true;
   } else if (this.x < 0) {
     this.zombieDirectionX = 1;
-    // algo adicional
   } else if (this.y < 0) {
     this.zombieDirectionY = 1;
   }
 
 }
-
-
-
-
-
-
-
-
 }
