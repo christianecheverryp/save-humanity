@@ -87,13 +87,17 @@ class Game {
     zombieMovement = (eachZombie) => {
         if(this.soldier.x > eachZombie.x){
             eachZombie.x += eachZombie.zombieSpeed
+            eachZombie.playerState = "frente"
         }else{
             eachZombie.x -= eachZombie.zombieSpeed
+            //eachZombie.playerState = "izquierda"
         }
         if( this.soldier.y > eachZombie.y){
             eachZombie.y += eachZombie.zombieSpeed
+            //eachZombie.playerState = "derecha"
         }else{
             eachZombie.y -= eachZombie.zombieSpeed
+            eachZombie.playerState = "frente"
         }
       }
 
