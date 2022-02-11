@@ -15,11 +15,12 @@ class Game {
         this.winScore = 20;
         this.dog = new Dog();
 
-        this.myMusicGameOver = new Audio("./music/gameOver.mp3")
+        this.myMusicGameOver = new Audio("./music/gameOver.wav")
+        this.myMusicGameOver.audio.volume= 0.1;
         this.myMusicVictoria = new Audio("./music/yeah.mp3")
         this.myMusicPrincipal = new Audio("./music/AMBIENTIC.mp3");
+        this.myMusicPrincipal.audio.volume = 0.1;
         this.myMusicToquePersonaje = new Audio("./music/toque.wav");
-        this.countPlayPause = 0;
 
         
         
@@ -158,6 +159,8 @@ class Game {
             console.log("choque zombie soldado") 
             this.myMusicPrincipal.stop();
             this.myMusicGameOver.play();
+            
+            
 
                 
             

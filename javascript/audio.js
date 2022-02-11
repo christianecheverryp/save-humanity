@@ -5,6 +5,7 @@ class Audio {
         this.audio.setAttribute("preload", "auto");
         this.audio.setAttribute("controls", "none");
         this.audio.style.display = "none";
+        //this.audio.volume = 0.2;
         document.body.appendChild(this.audio);
 
         
@@ -15,6 +16,7 @@ class Audio {
         this.stop = function () {
             this.audio.pause();
         }
+
 
     }
 
