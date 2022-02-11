@@ -67,12 +67,6 @@ document.addEventListener("keydown", (event) => {
   }
 })
 
-
-playPauseBtn.addEventListener("click", () =>{
-  console.log("pulsado")
-  playPause();
-})
-
 instructionsBtn.addEventListener("click", () => {
   modal_container.classList.add("show");
 })
