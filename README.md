@@ -1,5 +1,6 @@
 # save-humanity
-[Link Deploy](https://github.com/christianecheverryp/save-humanity)
+[Link Deploy]
+https://christianecheverryp.github.io/save-humanity/
 
 
 ## Description
